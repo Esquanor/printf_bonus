@@ -26,8 +26,8 @@ int	main(void)
 /*****************************************************************************\
  * flag space
  * ***************************************************************************/
-	int r = printf("man %d\n", 123);
-	int r1 = ft_printf("moi %d\n", 123);
+	int r = printf("normal man %d\n", 123);
+	int r1 = ft_printf("normal moi %d\n", 123);
 	printf("%d\n", r);
 	printf("%d\n", r1);
 	r = printf("man %d\n", -123);
@@ -39,8 +39,8 @@ int	main(void)
 	printf("%d\n", r);
 	printf("%d\n", r1);
 
-	r = printf("man %+d\n", 123);
-	r1 = ft_printf("moi %+d\n", 123);
+	r = printf("sign man %+d\n", 123);
+	r1 = ft_printf("sign moi %+d\n", 123);
 	printf("%d\n", r);
 	printf("%d\n", r1);
 	r = printf("man %+d\n", -123);
@@ -52,8 +52,8 @@ int	main(void)
 	printf("%d\n", r);
 	printf("%d\n", r1);
 
-	r = printf("man %.9d\n", 123);
-	r1 = ft_printf("moi %.9d\n", 123);
+	r = printf("dot man %.9d\n", 123);
+	r1 = ft_printf("dot moi %.9d\n", 123);
 	printf("%d\n", r);
 	printf("%d\n", r1);
 	r = printf("man %.1d\n", 123);
@@ -77,8 +77,8 @@ int	main(void)
 	printf("%d\n", r);
 	printf("%d\n", r1);
 
-	r = printf("man %-9d\n", 123);
-	r1 = ft_printf("moi %-9d\n", 123);
+	r = printf("minus man %-9d\n", 123);
+	r1 = ft_printf("minus moi %-9d\n", 123);
 	printf("%d\n", r);
 	printf("%d\n", r1);
 	r = printf("man %-d\n", 123);
@@ -101,6 +101,84 @@ int	main(void)
 	r1 = ft_printf("moi %-d\n", 90);
 	printf("%d\n", r);
 	printf("%d\n", r1);
+
+	r = printf("zero man %09d\n", 123);
+	r1 = ft_printf("zero moi %09d\n", 123);
+	printf("%d\n", r);
+	printf("%d\n", r1);
+	r = printf("man %0d\n", 123);
+	r1 = ft_printf("moi %0d\n", 123);
+	printf("%d\n", r);
+	printf("%d\n", r1);
+	r = printf("man %023d\n", 123);
+	r1 = ft_printf("moi %023d\n", 123);
+	printf("%d\n", r);
+	printf("%d\n", r1);
+	r = printf("man %065d\n", 0);
+	r1 = ft_printf("moi %065d\n", 0);
+	printf("%d\n", r);
+	printf("%d\n", r1);
+	r = printf("man %010d\n", -16789);
+	r1 = ft_printf("moi %010d\n", -16789);
+	printf("%d\n", r);
+	printf("%d\n", r1);
+	r = printf("man %00d\n", 90);
+	r1 = ft_printf("moi %00d\n", 90);
+	printf("%d\n", r);
+	printf("%d\n", r1);
+
+	r = printf("digit man %9d\n", 123);
+	r1 = ft_printf("digit moi %9d\n", 123);
+	printf("%d\n", r);
+	printf("%d\n", r1);
+	r = printf("man %d\n", 123);
+	r1 = ft_printf("moi %d\n", 123);
+	printf("%d\n", r);
+	printf("%d\n", r1);
+	r = printf("man %23d\n", 123);
+	r1 = ft_printf("moi %23d\n", 123);
+	printf("%d\n", r);
+	printf("%d\n", r1);
+	r = printf("man %65d\n", 0);
+	r1 = ft_printf("moi %65d\n", 0);
+	printf("%d\n", r);
+	printf("%d\n", r1);
+	r = printf("man %10d\n", -16789);
+	r1 = ft_printf("moi %10d\n", -16789);
+	printf("%d\n", r);
+	printf("%d\n", r1);
+	r = printf("man %1d\n", 90);
+	r1 = ft_printf("moi %1d\n", 90);
+	printf("%d\n", r);
+	printf("%d\n", r1);
+
+	r = printf("digit man %9X\n", 127);
+	r1 = ft_printf("digit moi %9X\n", 127);
+	printf("%d\n", r);
+	printf("%d\n", r1);
+	r = printf("man %13X\n", 123);
+	r1 = ft_printf("moi %13X\n", 123);
+	printf("%d\n", r);
+	printf("%d\n", r1);
+	r = printf("man %X\n", 123);
+	r1 = ft_printf("moi %X\n", 123);
+	printf("%d\n", r);
+	printf("%d\n", r1);
+	
+	r = printf("minus man %-12x\n", 7);
+	r1 = ft_printf("minus moi %-12x\n", 7);
+	printf("%d\n", r);
+	printf("%d\n", r1);
+	r = printf("man %-x\n", 16789);
+	r1 = ft_printf("moi %-x\n", 16789);
+	printf("%d\n", r);
+	printf("%d\n", r1);
+	r = printf("man %1d\n", 90);
+	r1 = ft_printf("moi %1d\n", 90);
+	printf("%d\n", r);
+	printf("%d\n", r1);
+
+
 
 	/*printf(":%s:\n", "Hello, world!");
 	printf(":%15s:\n", "Hello, world!");
