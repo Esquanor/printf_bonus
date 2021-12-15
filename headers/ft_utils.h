@@ -6,7 +6,7 @@
 /*   By: lfrederi <lfrederi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 14:12:01 by lfrederi          #+#    #+#             */
-/*   Updated: 2021/12/14 09:17:43 by lfrederi         ###   ########.fr       */
+/*   Updated: 2021/12/15 10:41:12 by lfrederi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,9 @@ int		ft_getindex(t_putflag flags[9], char c);
 int		ft_countdigit_p(unsigned long nbr);
 int		ft_countdigit_ux(unsigned int nbr, int lenbase);
 int		ft_countdigit_d(int nbr);
+int		ft_padding_blank(t_args *arg, long n, int size);
+int		ft_left_adjustment(t_args *arg, int len);
+int		ft_putzero_dotflag(t_args *arg, int len);
+int		ft_putzero_zeroflag(t_args *arg, int len);
 
 #endif

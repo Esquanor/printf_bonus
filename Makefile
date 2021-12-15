@@ -5,6 +5,7 @@ SRCS	=	./srcs/ft_printf.c\
 			./srcs/ft_print_flags1.c\
 			./srcs/ft_putstr.c\
 			./srcs/ft_utils.c\
+			./srcs/ft_utils1.c
 
 HEADER	= ./headers/
 

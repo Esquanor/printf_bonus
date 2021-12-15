@@ -179,7 +179,83 @@ int	main(void)
 	printf("%d\n", r1);
 
 
+	r = printf("minus man %-12s\n", "hello");
+	r1 = ft_printf("minus moi %-12s\n", "hello");
+	printf("%d\n", r);
+	printf("%d\n", r1);
+	r = printf("man %-s\n", "hello");
+	r1 = ft_printf("moi %-s\n", "hello");
+	printf("%d\n", r);
+	printf("%d\n", r1);
+	r = printf("man %-s\n", "");
+	r1 = ft_printf("moi %-s\n", "");
+	printf("%d\n", r);
+	printf("%d\n", r1);
 
+	r = printf("minus man %-12c\n", 'a');
+	r1 = ft_printf("minus moi %-12c\n", 'a');
+	printf("%d\n", r);
+	printf("%d\n", r1);
+	r = printf("man %-c\n", 'a');
+	r1 = ft_printf("moi %-c\n", 'a');
+	printf("%d\n", r);
+	printf("%d\n", r1);
+	r = printf("man %-1c\n", 'a');
+	r1 = ft_printf("moi %-1c\n", 'a');
+	printf("%d\n", r);
+	printf("%d\n", r1);
+
+	r = printf("minus man %-32p\n", "a");
+	r1 = ft_printf("minus moi %-32p\n", "a");
+	printf("%d\n", r);
+	printf("%d\n", r1);
+	r = printf("man %-p\n", "a");
+	r1 = ft_printf("moi %-p\n", "a");
+	printf("%d\n", r);
+	printf("%d\n", r1);
+	r = printf("man %-7p\n", "a");
+	r1 = ft_printf("moi %-7p\n", "a");
+	printf("%d\n", r);
+	printf("%d\n", r1);
+
+	//r = printf("dot man %.32p\n", "a");
+	//r1 = ft_printf("dot moi %.32p\n", "a");
+	//printf("%d\n", r);
+	//printf("%d\n", r1);
+	r = printf("man %-p\n", "a");
+	r1 = ft_printf("moi %-p\n", "a");
+	printf("%d\n", r);
+	printf("%d\n", r1);
+	r = printf("man %-7p\n", "a");
+	r1 = ft_printf("moi %-7p\n", "a");
+	printf("%d\n", r);
+	printf("%d\n", r1);
+
+	r = printf("dot man %.0s\n", "hello");
+	r1 = ft_printf("dot moi %.0s\n", "hello");
+	printf("%d\n", r);
+	printf("%d\n", r1);
+	r = printf("man %.30s\n", "hello");
+	r1 = ft_printf("moi %.30s\n", "hello");
+	printf("%d\n", r);
+	printf("%d\n", r1);
+	r = printf("man %.2s\n", "");
+	r1 = ft_printf("moi %.2s\n", "");
+	printf("%d\n", r);
+	printf("%d\n", r1);
+
+	r = printf("minus man %-3s\n", "hello");
+	r1 = ft_printf("minus moi %-3s\n", "hello");
+	printf("%d\n", r);
+	printf("%d\n", r1);
+	r = printf("man %-30s\n", "hello");
+	r1 = ft_printf("moi %-30s\n", "hello");
+	printf("%d\n", r);
+	printf("%d\n", r1);
+	r = printf("man %.2s\n", "");
+	r1 = ft_printf("moi %.2s\n", "");
+	printf("%d\n", r);
+	printf("%d\n", r1);
 	/*printf(":%s:\n", "Hello, world!");
 	printf(":%15s:\n", "Hello, world!");
 	printf(":%.10s:\n", "Hello, world!");

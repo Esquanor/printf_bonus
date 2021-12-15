@@ -6,7 +6,7 @@
 /*   By: lfrederi <lfrederi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 13:26:44 by lfrederi          #+#    #+#             */
-/*   Updated: 2021/12/14 11:31:49 by lfrederi         ###   ########.fr       */
+/*   Updated: 2021/12/15 09:52:34 by lfrederi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ void	ft_fill_array(t_putflag flags[9])
 
 	f = "pdiuxXcs";
 	f_specifer[0] = &ft_print_p;
-	f_specifer[1] = &ft_print_d;
-	f_specifer[2] = &ft_print_d;
+	f_specifer[1] = &ft_print_di;
+	f_specifer[2] = &ft_print_di;
 	f_specifer[3] = &ft_print_u;
 	f_specifer[4] = &ft_print_x;
 	f_specifer[5] = &ft_print_xx;
@@ -38,7 +38,7 @@ void	ft_fill_array(t_putflag flags[9])
 	flags[i].f_specifer = 0;
 }
 
-int	ft_getindex(t_putflag flags[9], char c)
+int	ft_getindex(t_putflag *flags, char c)
 {
 	int	i;
 

@@ -6,7 +6,7 @@
 /*   By: lfrederi <lfrederi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/07 23:30:39 by lfrederi          #+#    #+#             */
-/*   Updated: 2021/12/14 10:05:15 by lfrederi         ###   ########.fr       */
+/*   Updated: 2021/12/15 12:16:33 by lfrederi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,7 @@ int	ft_print_c(va_list *ap, t_args *args)
 
 	len = 1;
 	ft_putchar((char) va_arg(*ap, int));
-	if (args->minus_flag - 1)
-	{
-		ft_putblank(args->minus_flag - 1);
-		len += args->minus_flag - 1;
-	}
+	len += ft_left_adjustment(args, len);
 	return (len);
 }
 
@@ -39,21 +35,11 @@ int	ft_print_s(va_list *ap, t_args *args)
 	if (!s)
 		return (ft_putstr(s, 0));
 	len = ft_strlen(s);
-	if ((args->dot_flag >= 0 ) && (args->dot_flag < len))
+	if ((args->dot_flag < len) && (args->dot_flag >= 0))
 		len = args->dot_flag;
 	tmp = len;
-	if (args->digit_padding && args->minus_flag)
-		args->digit_padding = 0;
-	while (len < args->digit_padding)
-	{
-		ft_putchar(' ');
-		len++;
-	}
+	len += ft_padding_blank(args, 0, len);
 	ft_putstr(s, tmp);
-	while (len < args->minus_flag)
-	{
-		ft_putchar(' ');
-		len++;
-	}
+	len += ft_left_adjustment(args, len);
 	return (len);
 }
