@@ -6,7 +6,7 @@
 /*   By: lfrederi <lfrederi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/07 23:30:39 by lfrederi          #+#    #+#             */
-/*   Updated: 2021/12/15 11:14:44 by lfrederi         ###   ########.fr       */
+/*   Updated: 2021/12/15 15:08:38 by lfrederi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,10 +77,14 @@ int	ft_print_p(va_list *ap, t_args *arg)
 {
 	unsigned long	p;
 	int				len;
+	int				tmp;
 
 	p = va_arg(*ap, unsigned long);
 	len = ft_countdigit_p(p) + 2;
+	tmp = len - 2;
+	len += ft_padding_blank(arg, 0, len);
 	write(1, "0x", 2);
+	len += ft_putzero_dotflag(arg, tmp) + ft_putzero_zeroflag(arg, len);
 	ft_putnbr_lux(p);
 	len += ft_left_adjustment(arg, len);
 	return (len);

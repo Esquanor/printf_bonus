@@ -6,7 +6,7 @@
 /*   By: lfrederi <lfrederi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 13:26:44 by lfrederi          #+#    #+#             */
-/*   Updated: 2021/12/15 09:52:34 by lfrederi         ###   ########.fr       */
+/*   Updated: 2021/12/15 17:11:29 by lfrederi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,18 +38,16 @@ void	ft_fill_array(t_putflag flags[9])
 	flags[i].f_specifer = 0;
 }
 
-int	ft_getindex(t_putflag *flags, char c)
+void ft_init_t_args(t_args *arg)
 {
-	int	i;
-
-	i = 0;
-	while (flags[i].f_specifer)
-	{
-		if (flags[i].flag == c)
-			return (i);
-		i++;
-	}
-	return (-1);
+	arg->format = 0;
+	arg->sharp_flag = 0;
+	arg->sign_flag = 0;
+	arg->blank_flag = 0;
+	arg->digit_padding = 0;
+	arg->zero_flag = 0;
+	arg->minus_flag = -1;
+	arg->dot_flag = -1;
 }
 
 int	ft_countdigit_p(unsigned long nbr)

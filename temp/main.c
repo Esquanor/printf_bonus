@@ -256,13 +256,54 @@ int	main(void)
 	r1 = ft_printf("moi %.2s\n", "");
 	printf("%d\n", r);
 	printf("%d\n", r1);
-	/*printf(":%s:\n", "Hello, world!");
-	printf(":%15s:\n", "Hello, world!");
-	printf(":%.10s:\n", "Hello, world!");
-	printf(":%-10s:\n", "Hello, world!");
-	printf(":%-15s:\n", "Hello, world!");
-	printf(":%.15s:\n", "Hello, world!");
-	printf(":%15.10s:\n", "Hello, world!");
-	printf(":%-15.10s:\n", "Hello, world!");*/
+
+	r = printf(":%s:\n", "Hello, world!");
+	r1 = ft_printf(":%s:\n", "Hello, world!");
+	printf("%d\n", r);
+	printf("%d\n", r1);
+	r = printf(":%15s:\n", "Hello, world!");
+	r1 = ft_printf(":%15s:\n", "Hello, world!");
+	printf("%d\n", r);
+	printf("%d\n", r1);
+	r = printf(":%.10s:\n", "Hello, world!");
+	r1 = ft_printf(":%.10s:\n", "Hello, world!");
+	printf("%d\n", r);
+	printf("%d\n", r1);
+	r = printf(":%-10s:\n", "Hello, world!");
+	r1 = ft_printf(":%-10s:\n", "Hello, world!");
+	printf("%d\n", r);
+	printf("%d\n", r1);
+	r = printf(":%-15s:\n", "Hello, world!");
+	r1 = printf(":%-15s:\n", "Hello, world!");
+	printf("%d\n", r);
+	printf("%d\n", r1);
+	r = printf(":%.15s:\n", "Hello, world!");
+	r1 = ft_printf(":%.15s:\n", "Hello, world!");
+	printf("%d\n", r);
+	printf("%d\n", r1);
+	r = printf(":%15.10s:\n", "Hello, world!");
+	r1 = ft_printf(":%15.10s:\n", "Hello, world!");
+	printf("%d\n", r);
+	printf("%d\n", r1);
+	r = printf(":%-15.10s:\n", "Hello, world!");
+	r1 = printf(":%-15.10s:\n", "Hello, world!");
+	printf("%d\n", r);
+	printf("%d\n", r1);
+
+	
+	r = printf("mix man %0-3.12s\n", "hello");
+	r1 = ft_printf("mix moi %0-3.12s\n", "hello");
+	printf("%d\n", r);
+	printf("%d\n", r1);
+	r = printf("man %.30p\n", "hello");
+	r1 = ft_printf("moi %.30p\n", "hello");
+	printf("%d\n", r);
+	printf("%d\n", r1);
+	r = printf("man %0415.2q fin\n", 127);
+	r1 = ft_printf("moi %0415.2q fin\n", 127);
+	printf("%d\n", r);
+	printf("%d\n", r1);
+
+
 	return (0);
 }
