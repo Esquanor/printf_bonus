@@ -6,7 +6,7 @@
 /*   By: lfrederi <lfrederi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/07 23:30:39 by lfrederi          #+#    #+#             */
-/*   Updated: 2021/12/16 18:37:47 by lfrederi         ###   ########.fr       */
+/*   Updated: 2021/12/17 17:35:02 by lfrederi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,22 +19,26 @@ int	ft_print_x(va_list *ap, t_args *arg)
 	unsigned int	n;
 	int				len;
 	int				tmp;
+	int				sharp;
 
 	n = va_arg(*ap, unsigned int);
+	tmp = ft_countdigit_ux(n, 16);
+	sharp = 0;
+	if (arg->sharp_flag && n)
+		sharp = 2;
 	if (!n && !arg->dot_flag)
-		return (0);
+		tmp = 0;
+	len = tmp + sharp;
 	if ((arg->dot_flag >= 0) && (arg->zero_flag == 1))
 		arg->zero_flag = 0;
-	len = ft_countdigit_ux(n, 16);
-	tmp = len;
-	len += ft_padding_blank(arg, n, len);
-	if (arg->sharp_flag && n)
-	{
-		write(1, "0x", 2);
-		len += 2;
-	}
+	if (arg->dot_flag > len)
+		len += ft_padding_blank(arg, n, arg->dot_flag + sharp);
+	else
+		len += ft_padding_blank(arg, n, len);
+	ft_put_sharpflag(arg, n);
 	len += ft_putzero_dotflag(arg, tmp) + ft_putzero_zeroflag(arg, len);
-	ft_putnbr_x(n);
+	if (tmp)
+		ft_putnbr_x(n);
 	len += ft_left_adjustment(arg, len);
 	return (len);
 }
@@ -44,22 +48,26 @@ int	ft_print_xx(va_list *ap, t_args *arg)
 	unsigned int	n;
 	int				len;
 	int				tmp;
+	int				sharp;
 
 	n = va_arg(*ap, unsigned int);
+	tmp = ft_countdigit_ux(n, 16);
+	sharp = 0;
+	if (arg->sharp_flag && n)
+		sharp = 2;
 	if (!n && !arg->dot_flag)
-		return (0);
+		tmp = 0;
+	len = tmp + sharp;
 	if ((arg->dot_flag >= 0) && (arg->zero_flag == 1))
 		arg->zero_flag = 0;
-	len = ft_countdigit_ux(n, 16);
-	tmp = len;
-	len += ft_padding_blank(arg, n, len);
-	if (arg->sharp_flag && n)
-	{
-		write(1, "0X", 2);
-		len += 2;
-	}
+	if (arg->dot_flag > len)
+		len += ft_padding_blank(arg, n, arg->dot_flag + sharp);
+	else
+		len += ft_padding_blank(arg, n, len);
+	ft_put_sharpflag(arg, n);
 	len += ft_putzero_dotflag(arg, tmp) + ft_putzero_zeroflag(arg, len);
-	ft_putnbr_xx(n);
+	if (tmp)
+		ft_putnbr_xx(n);
 	len += ft_left_adjustment(arg, len);
 	return (len);
 }
@@ -71,15 +79,16 @@ int	ft_print_u(va_list *ap, t_args *arg)
 	int				tmp;
 
 	n = va_arg(*ap, unsigned int);
+	tmp = ft_countdigit_ux(n, 10);
 	if (!n && !arg->dot_flag)
-		return (0);
+		tmp = 0;
+	len = tmp;
 	if ((arg->dot_flag >= 0) && (arg->zero_flag == 1))
 		arg->zero_flag = 0;
-	len = ft_countdigit_ux(n, 10);
-	tmp = len;
 	len += ft_padding_blank(arg, n, len);
 	len += ft_putzero_dotflag(arg, tmp) + ft_putzero_zeroflag(arg, len);
-	ft_putnbr_u(n);
+	if (tmp)
+		ft_putnbr_u(n);
 	len += ft_left_adjustment(arg, len);
 	return (len);
 }
@@ -91,17 +100,17 @@ int	ft_print_p(va_list *ap, t_args *arg)
 	int				tmp;
 
 	p = va_arg(*ap, unsigned long);
-	if ((arg->dot_flag >= 0) && (arg->zero_flag == 1))
-		arg->zero_flag = 0;
+	tmp = ft_countdigit_p(p);
 	if (!p && !arg->dot_flag)
-		len = 2;
+		tmp = 0;
+	len = tmp + 2;
+	if (arg->dot_flag > len)
+		len += ft_padding_blank(arg, p, arg->dot_flag + 2);
 	else
-		len = ft_countdigit_p(p) + 2;
-	tmp = len - 2;
-	len += ft_padding_blank(arg, 0, len);
+		len += ft_padding_blank(arg, p, len);
 	write(1, "0x", 2);
 	len += ft_putzero_dotflag(arg, tmp) + ft_putzero_zeroflag(arg, len);
-	if (!(!p && !arg->dot_flag))
+	if (tmp)
 		ft_putnbr_lux(p);
 	len += ft_left_adjustment(arg, len);
 	return (len);
@@ -115,11 +124,11 @@ int	ft_print_di(va_list *ap, t_args *arg)
 	int	z;
 
 	n = va_arg(*ap, int);
-	len = ft_countdigit_d(n);
-	tmp = len;
-	z = 0;
+	tmp = ft_countdigit_d(n);
 	if (!n && !arg->dot_flag)
-		return (0);
+		tmp = 0;
+	len = tmp;
+	z = 0;
 	if ((arg->dot_flag >= 0) && (arg->zero_flag == 1))
 		arg->zero_flag = 0;
 	len += ft_padding_blank(arg, n, len);
@@ -130,7 +139,8 @@ int	ft_print_di(va_list *ap, t_args *arg)
 	else if (len && (arg->blank_flag) && (n >= 0))
 		len += ft_putchar(' ');
 	len += (ft_putzero_dotflag(arg, tmp) + ft_putzero_zeroflag(arg, len));
-	ft_putnbr_d(n);
+	if (tmp)
+		ft_putnbr_d(n);
 	len += ft_left_adjustment(arg, len);
 	return (len);
 }

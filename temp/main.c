@@ -489,10 +489,169 @@ int	main(void)
 		printf("                                             \033[1;33mretour officiel   : %d\033[0m\n", i);
 		i = ft_printf("|%*.*p%%|\n", -20, 15, -12345);
 		printf("                                             \033[1;33mretour unofficiel : %d\033[0m\n", i);*/
-		int r = printf("@moulitest: %5.x %5.0x", 0, 0); 
-		int r1 = ft_printf("@moulitest: %5.x %5.0x", 0, 0); 
+		char *ptr = "";
+
+		int r = printf("@man: %p\n", NULL); 
+		int r1 = ft_printf("@moi: %p\n", NULL); 
+		printf("%d\n", r);
+		printf("%d\n", r1);
+		r = printf("@man: %p\n", ptr); 
+		r1 = ft_printf("@moi: %p\n", ptr); 
 		printf("%d\n", r);
 		printf("%d\n", r1);
 
-	return (0);
+		r = printf("@man: %5p\n", NULL); 
+		r1 = ft_printf("@moi: %5p\n", NULL); 
+		printf("%d\n", r);
+		printf("%d\n", r1);
+
+		r = printf("@man: %9p\n", ptr); 
+		r1 = ft_printf("@moi: %9p\n", ptr); 
+		printf("%d\n", r);
+		printf("%d\n", r1);
+
+		r = printf("@man: %.5p\n", NULL); 
+		r1 = ft_printf("@moi: %.5p\n", NULL); 
+		printf("%d\n", r);
+		printf("%d\n", r1);
+
+		r = printf("@man: %.1p\n", ptr); 
+		r1 = ft_printf("@moi: %.1p\n", ptr); 
+		printf("%d\n", r);
+		printf("%d\n", r1);	
+
+		r = printf("@man: %10.5p\n", NULL); 
+		r1 = ft_printf("@moi: %10.5p\n", NULL); 
+		printf("%d\n", r);
+		printf("%d\n", r1);
+
+		r = printf("@man: %33.30p\n", ptr); 
+		r1 = ft_printf("@moi: %33.30p\n", ptr); 
+		printf("%d\n", r);
+		printf("%d\n", r1);	
+
+		r = printf("@man: %01p\n", ptr); 
+		r1 = ft_printf("@moi: %01p\n", ptr); 
+		printf("%d\n", r);
+		printf("%d\n", r1);	
+
+		r = printf("@man: %010.5p\n", NULL); 
+		r1 = ft_printf("@moi: %010.5p\n", NULL); 
+		printf("%d\n", r);
+		printf("%d\n", r1);
+
+		r = printf("@man: %033.30p\n", ptr); 
+		r1 = ft_printf("@moi: %033.30p\n", ptr); 
+		printf("%d\n", r);
+		printf("%d\n", r1);
+
+		
+		r = printf("@man: %-32.30p\n", ptr); 
+		r1 = ft_printf("@moi: %-32.30p\n", ptr); 
+		printf("%d\n", r);
+		printf("%d\n", r1);	
+
+		r = printf("@man: %-01p\n", ptr); 
+		r1 = ft_printf("@moi: %-01p\n", ptr); 
+		printf("%d\n", r);
+		printf("%d\n", r1);	
+
+		r = printf("@man: %010.5p\n", NULL); 
+		r1 = ft_printf("@moi: %010.5p\n", NULL); 
+		printf("%d\n", r);
+		printf("%d\n", r1);
+
+		r = printf("@man: %033.30p\n", ptr); 
+		r1 = ft_printf("@moi: %033.30p\n", ptr); 
+		printf("%d\n", r);
+		printf("%d\n", r1);	
+
+		r = printf("@man: %010.p\n", NULL); 
+		r1 = ft_printf("@moi: %010.p\n", NULL); 
+		printf("%d\n", r);
+		printf("%d\n", r1);
+
+		r = printf("@man: %033.p\n", ptr); 
+		r1 = ft_printf("@moi: %033.p\n", ptr); 
+		printf("%d\n", r);
+		printf("%d\n", r1);	
+
+		r = printf("@man: %33.xp\n", 0); 
+		r1 = ft_printf("@moi: %33.xp\n", 0); 
+		printf("%d\n", r);
+		printf("%d\n", r1);	
+
+		r = printf("@man: %#33xp\n", 12); 
+		r1 = ft_printf("@moi: %#33xp\n", 12); 
+		printf("%d\n", r);
+		printf("%d\n", r1);
+
+		r = printf("@man: %#33.9xp\n", 12); 
+		r1 = ft_printf("@moi: %#33.9xp\n", 12); 
+		printf("%d\n", r);
+		printf("%d\n", r1);	
+
+		r = printf("@man: %0#39xp\n", 12); 
+		r1 = ft_printf("@moi: %0#39xp\n", 12); 
+		printf("%d\n", r);
+		printf("%d\n", r1);	
+		
+		r = printf("@man: %#33up\n", 12); 
+		r1 = ft_printf("@moi: %#33up\n", 12); 
+		printf("%d\n", r);
+		printf("%d\n", r1);
+
+		r = printf("@man: %#33.9up\n", 12); 
+		r1 = ft_printf("@moi: %#33.9up\n", 12); 
+		printf("%d\n", r);
+		printf("%d\n", r1);	
+
+		r = printf("@man: %0#39up\n", 12); 
+		r1 = ft_printf("@moi: %0#39up\n", 12); 
+		printf("%d\n", r);
+		printf("%d\n", r1);	
+
+		r = printf("@man: %#33.up\n", 12); 
+		r1 = ft_printf("@moi: %#33.up\n", 12); 
+		printf("%d\n", r);
+		printf("%d\n", r1);	
+
+		r = printf("@man: %0#+39up\n", 12); 
+		r1 = ft_printf("@moi: %0#+39up\n", 12); 
+		printf("%d\n", r);
+		printf("%d\n", r1);	
+
+		r = printf("@man: %5.0u\n", 0); 
+		r1 = ft_printf("@moi: %5.0u\n", 0); 
+		printf("%d\n", r);
+		printf("%d\n", r1);	
+
+		r = printf("@man: %05.15u\n", 15); 
+		r1 = ft_printf("@moi: %05.15u\n", 15); 
+		printf("%d\n", r);
+		printf("%d\n", r1);	
+
+		r = printf("@man:%5.012c\n", '@');
+		r1 = ft_printf("@moi:%5.012c\n", '@');
+		printf("%d\n", r);
+		printf("%d\n", r1);	
+
+		r = printf("@man:%5.c\n", 0);
+		r1 = ft_printf("@moi:%5.c\n", 0);
+		printf("%d\n", r);
+		printf("%d\n", r1);	
+
+		r = printf("@man:%5.10d\n", 123456);
+		r1 = ft_printf("@moi:%5.10d\n", 123456);
+		printf("%d\n", r);
+		printf("%d\n", r1);	
+
+		r = printf("@man:%5.d\n", 0);
+		r1 = ft_printf("@moi:%5.d\n", 0);
+		printf("%d\n", r);
+		printf("%d\n", r1);	
+
+
+
+		return (0);
 }

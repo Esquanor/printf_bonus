@@ -6,7 +6,7 @@
 /*   By: lfrederi <lfrederi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/07 09:38:29 by lfrederi          #+#    #+#             */
-/*   Updated: 2021/12/16 17:38:24 by lfrederi         ###   ########.fr       */
+/*   Updated: 2021/12/17 17:40:44 by lfrederi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,8 @@ static int	ft_isflag(int i, const char *s, t_args *arg)
 	i += ft_increment_flag(s[i], arg);
 	if (s[i] == '-')
 	{
-		if ((arg->minus_flag == -1) ||
-				((arg->minus_flag > -1) && (ft_isdigit(s[i+1]))))
+		if ((arg->minus_flag == -1)
+			|| ((arg->minus_flag > -1) && (ft_isdigit(s[i + 1]))))
 			arg->minus_flag = 0;
 		while (ft_isdigit(s[++i]))
 			arg->minus_flag = arg->minus_flag * 10 + (s[i] - '0');
@@ -69,7 +69,7 @@ static int	ft_isflag(int i, const char *s, t_args *arg)
 	if (ft_isdigit(s[i]) && (s[i] - '0'))
 		while (ft_isdigit(s[i]))
 			arg->digit_padding = arg->digit_padding * 10 + (s[i++] - '0');
-	return (i - 1);
+	return (i);
 }
 
 static int	ft_formatting(const char *s, va_list *ap, t_putflag *f, t_args *arg)
@@ -78,22 +78,23 @@ static int	ft_formatting(const char *s, va_list *ap, t_putflag *f, t_args *arg)
 	int	i;
 
 	ret = 0;
-	i = -1;
-	while (s[++i])
+	i = 0;
+	while (s[i])
 	{
 		if (s[i] == '%')
 		{
-			while (!ft_isformat(s[++i]) && ft_isarguments(s[i]))
+			i++;
+			while (!ft_isformat(s[i]) && ft_isarguments(s[i]))
 				i = ft_isflag(i, s, arg);
 			if (!s[i])
 				return (ret);
 			arg->format = s[i];
 			ret += ft_printargs(arg, ap, f);
 			ft_init_t_args(arg);
-			continue ;
 		}
-		ft_putchar(s[i]);
-		ret++;
+		else
+			ret += ft_putchar(s[i]);
+		i++;
 	}
 	return (ret);
 }

@@ -6,7 +6,7 @@
 /*   By: lfrederi <lfrederi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/07 23:30:39 by lfrederi          #+#    #+#             */
-/*   Updated: 2021/12/16 17:34:01 by lfrederi         ###   ########.fr       */
+/*   Updated: 2021/12/17 17:38:13 by lfrederi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ int	ft_print_c(va_list *ap, t_args *args)
 	int	len;
 
 	len = 0;
+	if (args->dot_flag >= 0)
+		args->dot_flag = -1;
 	len += ft_padding_blank(args, 0, 1);
 	len += ft_putzero_zeroflag(args, 1);
 	len += ft_putchar((char) va_arg(*ap, int));
@@ -58,6 +60,7 @@ int	ft_print_s(va_list *ap, t_args *args)
 		args->dot_flag = len;
 	tmp = len;
 	len += ft_padding_blank(args, 0, tmp);
+	len += ft_putzero_zeroflag(args, tmp);
 	if (!s)
 		ft_putstr("(null)", tmp);
 	else
