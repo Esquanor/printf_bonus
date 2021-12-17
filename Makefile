@@ -4,13 +4,22 @@ SRCS	=	./srcs/ft_printf.c\
 			./srcs/ft_print_flags.c\
 			./srcs/ft_print_flags1.c\
 			./srcs/ft_putstr.c\
-			./srcs/ft_utils.c\
-			./srcs/ft_utils1.c\
-			./srcs/ft_utils2.c
+			./srcs/ft_utils.c
 
-HEADER	= ./headers/
+SRCS_BONUS	=	./srcs/ft_printf_bonus.c\
+			./srcs/ft_putnbr_bonus.c\
+			./srcs/ft_print_flags_bonus.c\
+			./srcs/ft_print_flags1_bonus.c\
+			./srcs/ft_putstr_bonus.c\
+			./srcs/ft_utils_bonus.c\
+			./srcs/ft_utils1_bonus.c\
+			./srcs/ft_utils2_bonus.c
+
+HEADER		= ./headers/
 
 OBJS	= ${SRCS:.c=.o}
+
+OBJS_BONUS	= ${SRCS_BONUS:.c=.o}
 
 NAME	= libftprintf.a
 
@@ -23,11 +32,11 @@ CFLAGS	= -Wall -Wextra -Werror
 .c.o:
 	${CC} ${CFLAGS} -I ${HEADER} -c $< -o ${<:.c=.o}
 
-${NAME}:	${OBJS}
+${NAME}: ${OBJS}
 		ar rcs ${NAME} ${OBJS}
 
 clean:
-		${RM} ${OBJS}
+		${RM} ${OBJS} ${OBJS_BONUS}
 
 all:	${NAME}
 
@@ -40,6 +49,10 @@ re:		fclean all
 test:	all	
 	${CC} ${CFLAGS} -o test temp/main.c libftprintf.a
 
-bonus: ${NAME}
+rmmandatory:
+	${RM} ${OBJS} ${NAME}
+
+bonus: rmmandatory ${OBJS_BONUS}
+	ar rcs ${NAME} ${OBJS_BONUS}
 
 .PHONY:	all clean fclean re

@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_utils.c                                         :+:      :+:    :+:   */
+/*   ft_utils_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lfrederi <lfrederi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 13:26:44 by lfrederi          #+#    #+#             */
-/*   Updated: 2021/12/15 22:54:37 by lfrederi         ###   ########.fr       */
+/*   Updated: 2021/12/15 23:16:17 by lfrederi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../headers/ft_utils.h"
-#include "../headers/ft_print_flags.h"
+#include "../headers/ft_utils_bonus.h"
+#include "../headers/ft_print_flags_bonus.h"
 
 void	ft_fill_array(t_putflag flags[9])
 {
 	const char	*f;
-	int			(*f_specifer[9])(va_list *);
+	int			(*f_specifer[9])(va_list *, t_args *arg);
 	int			i;
 
 	f = "pdiuxXcs";
@@ -38,18 +38,16 @@ void	ft_fill_array(t_putflag flags[9])
 	flags[i].f_specifer = 0;
 }
 
-int	ft_getindex(t_putflag *flags, char c)
+void	ft_init_t_args(t_args *arg)
 {
-	int	i;
-
-	i = 0;
-	while (flags[i].f_specifer)
-	{
-		if (flags[i].flag == c)
-			return (i);
-		i++;
-	}
-	return (-1);
+	arg->format = 0;
+	arg->sharp_flag = 0;
+	arg->sign_flag = 0;
+	arg->blank_flag = 0;
+	arg->digit_padding = 0;
+	arg->zero_flag = 0;
+	arg->minus_flag = -1;
+	arg->dot_flag = -1;
 }
 
 int	ft_countdigit_p(unsigned long nbr)
@@ -82,15 +80,13 @@ int	ft_countdigit_ux(unsigned int nbr, int lenbase)
 	return (ret);
 }
 
-int	ft_countdigit_di(int nbr)
+int	ft_countdigit_d(int nbr)
 {
 	int	ret;
 
 	if (!nbr)
 		return (1);
 	ret = 0;
-	if (nbr < 0)
-		ret++;
 	while (nbr != 0)
 	{
 		nbr = nbr / 10;

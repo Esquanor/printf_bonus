@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_putstr_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lfrederi <lfrederi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/07 23:18:26 by lfrederi          #+#    #+#             */
-/*   Updated: 2021/12/15 22:52:37 by lfrederi         ###   ########.fr       */
+/*   Updated: 2021/12/16 16:08:41 by lfrederi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,8 @@
 
 int	ft_putstr(const char *s, int size)
 {
-	if (s)
-	{
-		write(1, s, size);
-		return (size);
-	}
-	else
-	{
-		write(1, "(null)", 6);
-		return (6);
-	}
+	write(1, s, size);
+	return (size);
 }
 
 int	ft_strlen(const char *s)
@@ -36,7 +28,36 @@ int	ft_strlen(const char *s)
 	return (len);
 }
 
-void	ft_putchar(char c)
+int	ft_putchar(char c)
 {
 	write(1, &c, 1);
+	return (1);
+}
+
+int	ft_putzero(int n)
+{
+	int	tmp;
+
+	tmp = n;
+	while (tmp > 0)
+	{
+		write(1, "0", 1);
+		tmp--;
+	}
+	return (n);
+}
+
+int	ft_putblank(int n)
+{
+	int	tmp;
+
+	if (n <= 0)
+		return (0);
+	tmp = n;
+	while (tmp > 0)
+	{
+		write(1, " ", 1);
+		tmp--;
+	}
+	return (n);
 }

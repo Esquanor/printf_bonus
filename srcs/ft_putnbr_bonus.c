@@ -1,17 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lfrederi <lfrederi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/07 23:14:49 by lfrederi          #+#    #+#             */
-/*   Updated: 2021/12/15 23:02:42 by lfrederi         ###   ########.fr       */
+/*   Updated: 2021/12/15 23:15:09 by lfrederi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include "../headers/ft_putnbrstr.h"
+#include "../headers/ft_putnbrstr_bonus.h"
 
 void	ft_putnbr_x(unsigned int nbr)
 {
@@ -54,18 +53,15 @@ void	ft_putnbr_lux(unsigned long p)
 	ft_putchar(base[p % 16]);
 }
 
-void	ft_putnbr_di(int nbr)
+void	ft_putnbr_d(int nbr)
 {
 	unsigned int	n;
 
 	if (nbr < 0)
-	{
 		n = -1 * nbr;
-		write(1, "-", 1);
-	}
 	else
 		n = nbr;
 	if (n > 9)
-		ft_putnbr_di(n / 10);
+		ft_putnbr_d(n / 10);
 	ft_putchar((n % 10) + '0');
 }

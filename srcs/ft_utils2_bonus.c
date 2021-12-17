@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_utils2.c                                        :+:      :+:    :+:   */
+/*   ft_utils2_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lfrederi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 17:04:06 by lfrederi          #+#    #+#             */
-/*   Updated: 2021/12/15 17:25:01 by lfrederi         ###   ########.fr       */
+/*   Updated: 2021/12/16 10:49:57 by lfrederi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../headers/ft_utils.h"
+#include "../headers/ft_utils_bonus.h"
 
 int	ft_getindex(t_putflag *flags, char c)
 {
@@ -31,7 +31,7 @@ int	ft_isformat(char c)
 	int			i;
 	const char	*format;
 
-	format = "cspdiuxX";
+	format = "cspdiuxX%";
 	i = 0;
 	while (format[i])
 	{
@@ -42,7 +42,7 @@ int	ft_isformat(char c)
 	return (0);
 }
 
-int ft_isdigit(char c)
+int	ft_isdigit(char c)
 {
 	const char	*digit;
 	int			i;
@@ -56,7 +56,6 @@ int ft_isdigit(char c)
 		i++;
 	}
 	return (0);
-
 }
 
 int	ft_isarguments(char c)
@@ -71,20 +70,6 @@ int	ft_isarguments(char c)
 		if (arguments[i] == c)
 			return (1);
 		i++;
-	}
-	return (0);
-}
-
-int	ft_increment_flag(char c)
-{
-	const char	*f;
-
-	f = "#+0 ";
-	while (*f)
-	{
-		if (*f == c)
-			return (1);
-		f++;
 	}
 	return (0);
 }
