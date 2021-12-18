@@ -6,7 +6,7 @@
 /*   By: lfrederi <lfrederi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/07 23:30:39 by lfrederi          #+#    #+#             */
-/*   Updated: 2021/12/17 17:35:02 by lfrederi         ###   ########.fr       */
+/*   Updated: 2021/12/18 14:09:22 by lfrederi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,10 @@ int	ft_print_x(va_list *ap, t_args *arg)
 		len += ft_padding_blank(arg, n, arg->dot_flag + sharp);
 	else
 		len += ft_padding_blank(arg, n, len);
-	ft_put_sharpflag(arg, n);
+	ft_put_sharpflag(arg, n, 0);
 	len += ft_putzero_dotflag(arg, tmp) + ft_putzero_zeroflag(arg, len);
 	if (tmp)
-		ft_putnbr_x(n);
+		ft_putnbr_x(n, 0);
 	len += ft_left_adjustment(arg, len);
 	return (len);
 }
@@ -64,10 +64,10 @@ int	ft_print_xx(va_list *ap, t_args *arg)
 		len += ft_padding_blank(arg, n, arg->dot_flag + sharp);
 	else
 		len += ft_padding_blank(arg, n, len);
-	ft_put_sharpflag(arg, n);
+	ft_put_sharpflag(arg, n, 1);
 	len += ft_putzero_dotflag(arg, tmp) + ft_putzero_zeroflag(arg, len);
 	if (tmp)
-		ft_putnbr_xx(n);
+		ft_putnbr_x(n, 1);
 	len += ft_left_adjustment(arg, len);
 	return (len);
 }
@@ -104,6 +104,8 @@ int	ft_print_p(va_list *ap, t_args *arg)
 	if (!p && !arg->dot_flag)
 		tmp = 0;
 	len = tmp + 2;
+	if ((arg->dot_flag >= 0) && (arg->zero_flag == 1))
+		arg->zero_flag = 0;
 	if (arg->dot_flag > len)
 		len += ft_padding_blank(arg, p, arg->dot_flag + 2);
 	else
@@ -121,22 +123,20 @@ int	ft_print_di(va_list *ap, t_args *arg)
 	int	n;
 	int	len;
 	int	tmp;
-	int	z;
 
 	n = va_arg(*ap, int);
 	tmp = ft_countdigit_d(n);
 	if (!n && !arg->dot_flag)
 		tmp = 0;
 	len = tmp;
-	z = 0;
 	if ((arg->dot_flag >= 0) && (arg->zero_flag == 1))
 		arg->zero_flag = 0;
 	len += ft_padding_blank(arg, n, len);
 	if (n < 0)
 		len += ft_putchar('-');
-	if (len && (arg->sign_flag) && (n >= 0))
+	if ((arg->sign_flag) && (n >= 0))
 		len += ft_putchar('+');
-	else if (len && (arg->blank_flag) && (n >= 0))
+	else if ((arg->blank_flag) && (n >= 0) && !arg->digit_padding)
 		len += ft_putchar(' ');
 	len += (ft_putzero_dotflag(arg, tmp) + ft_putzero_zeroflag(arg, len));
 	if (tmp)

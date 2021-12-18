@@ -6,7 +6,7 @@
 /*   By: lfrederi <lfrederi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 09:53:53 by lfrederi          #+#    #+#             */
-/*   Updated: 2021/12/17 17:43:14 by lfrederi         ###   ########.fr       */
+/*   Updated: 2021/12/18 14:18:57 by lfrederi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,13 @@ int	ft_putzero_zeroflag(t_args *arg, int len)
 	return (0);
 }
 
-void	ft_put_sharpflag(t_args *arg, unsigned int n)
+void	ft_put_sharpflag(t_args *arg, unsigned int n, int upper)
 {
 	if (arg->sharp_flag && n)
-		write(1, "0x", 2);
+	{
+		if (upper)
+			write(1, "0X", 2);
+		else
+			write(1, "0x", 2);
+	}
 }

@@ -6,33 +6,24 @@
 /*   By: lfrederi <lfrederi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/07 23:14:49 by lfrederi          #+#    #+#             */
-/*   Updated: 2021/12/15 23:15:09 by lfrederi         ###   ########.fr       */
+/*   Updated: 2021/12/18 12:11:26 by lfrederi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/ft_putnbrstr_bonus.h"
 
-void	ft_putnbr_x(unsigned int nbr)
+void	ft_putnbr_x(unsigned int nbr, int upper)
 {
 	const char		*base;
 	unsigned int	n;
 
-	base = "0123456789abcdef";
+	if (upper)
+		base = "0123456789ABCDEF";
+	else
+		base = "0123456789abcdef";
 	n = nbr;
 	if (n > 15)
-		ft_putnbr_x(n / 16);
-	ft_putchar(base[n % 16]);
-}
-
-void	ft_putnbr_xx(unsigned int nbr)
-{
-	const char		*base;
-	unsigned int	n;
-
-	base = "0123456789ABCDEF";
-	n = nbr;
-	if (n > 15)
-		ft_putnbr_xx(n / 16);
+		ft_putnbr_x((n / 16), upper);
 	ft_putchar(base[n % 16]);
 }
 

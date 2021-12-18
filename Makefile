@@ -45,10 +45,6 @@ fclean:	clean
 
 re:		fclean all
 
-#REMOVE
-test:	all	
-	${CC} ${CFLAGS} -o test temp/main.c libftprintf.a
-
 rmmandatory:
 	${RM} ${OBJS} ${NAME}
 

@@ -6,7 +6,7 @@
 /*   By: lfrederi <lfrederi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/07 23:30:39 by lfrederi          #+#    #+#             */
-/*   Updated: 2021/12/15 22:57:34 by lfrederi         ###   ########.fr       */
+/*   Updated: 2021/12/18 12:07:55 by lfrederi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	ft_print_x(va_list *ap)
 	unsigned int	n;
 
 	n = va_arg(*ap, unsigned int);
-	ft_putnbr_x(n);
+	ft_putnbr_x(n, 0);
 	return (ft_countdigit_ux(n, 16));
 }
 
@@ -28,7 +28,7 @@ int	ft_print_xx(va_list *ap)
 	unsigned int	n;
 
 	n = va_arg(*ap, unsigned int);
-	ft_putnbr_xx(n);
+	ft_putnbr_x(n, 1);
 	return (ft_countdigit_ux(n, 16));
 }
 
